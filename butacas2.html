@@ -5,9 +5,20 @@
    
 	<title>Nueva Pelicula</title>
     <link rel="stylesheet" type="text/css" href="estilocine.css">
+     <link rel="stylesheet" type="text/css" href="estilopopup.css">
     </head>
-<body>
-<section>
+<body onload="cargardatosdelapelicula()">
+<span id="titulodelapelicula"></span>
+ 
+<div class="modal">
+  <p class="message">Look at this fancy pop-up</p>
+  <div class="options">
+    <button class="btn">Yes</button>
+    <button class="btn">No</button>
+  </div>
+</div>
+
+    <section>
 <div class="theatre">
  <table>
     <tr>
@@ -101,12 +112,40 @@
     <td><div class="seat"><img src="seat.png" height="50px" width="50px"><br>6</div></td>
     </div>
 </tr>
-
+      <tr>
+     <div class="fila1">
+      <td><div class="seat"></div></td>
+    <td><div class="seat"><br>s</div></td>
+    <td><div class="seat"><br>c</div></td>
+    <td><div class="seat"><br>r</div></td>
+    <td><div class="seat"><br>e</div></td>
+    <td><div class="seat"><br>e</div></td>
+    <td><div class="seat"><br></div></td>
+    <td><div class="seat"><br>n</div></td>
+    <td><div class="seat"><br></div></td>
+    </div>
+</tr>
     
     </table>
      </div>
     
     </section>
+    <script>
+    function cargardatosdelapelicula()
+    
+    {
+        
+        var pelicula = JSON.parse(localStorage.getItem('peliculaseleccionada'))
+        
+        document.getElementById("titulodelapelicula").innerHTML += pelicula[0].NOMBRE + "<hr><p>Tanda: "+pelicula[0].FECHA+ " Inicia: "+pelicula[0].HORAINICIO +": "+pelicula[0].MINUTOINICIO+"<p/>";
+        
+        
+        
+        
+    }
+    </script>
+    <script src="pop.js"></script>
     </body>
+    
     </html>
     

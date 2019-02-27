@@ -141,11 +141,31 @@
     </div>
 <script src="DatosFront-end.js"></script>
 <script>
-    function agregaimgdepeliculaaldiv(imgenbase64,iddeldiv,iddelapelicula)
     
+    function agregaimgdepeliculaaldiv(imgenbase64,iddeldiv,iddelapelicula)  //  Primero llega a la funcion de abajo cargarpeliculasdelmesyanno
+
     {
-        document.getElementById('febrero'+iddeldiv).innerHTML += "<img src='"+imgenbase64+"' height='42' width='42' id= '"+iddelapelicula+"' onclick='cargataquilla('"+iddelapelicula+"')' class='img'>"
+        document.getElementById('febrero'+iddeldiv).innerHTML += "<img src='"+imgenbase64+"' height='42' width='42' id= "+iddelapelicula+" onclick='cargataquilla(\""+iddelapelicula+"\")'class='img'>"; //  El fec dentro del getElementById es porque solo reconoce los numeros y hay que concatenar el fec
     }
+    
+
+    
+    function cargataquilla(id)
+        {
+            
+            
+             let clasepeliculainstanciada = new _Pelicula(id);
+               clasepeliculainstanciada.Seleccionarporid().then(function(response) {
+                   
+
+                   
+               localStorage.setItem("peliculaseleccionada",JSON.stringify(response));
+                   location.href="butacas2.html"                
+}, function(error) {
+ console.log(error);
+});
+        
+        }
     
     function cargarpeliculasdelmesyanno()
     {
@@ -168,6 +188,7 @@
         
         
     }
+                    
 </script>
 </body>
 </html>
